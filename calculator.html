@@ -26,24 +26,28 @@
             <td><input type="button" value="2" ng-click="addNumber('2')"></td>
             <td><input type="button" value="3" ng-click="addNumber('3')"></td>
             <td><input type="button" value="+" ng-click="addOperator('+')"></td>
+            <td><input type="button" value="^" ng-click="addOperator('^')"></td>
           </tr>
           <tr>
             <td><input type="button" value="4" ng-click="addNumber('4')"></td>
             <td><input type="button" value="5" ng-click="addNumber('5')"></td>
             <td><input type="button" value="6" ng-click="addNumber('6')"></td>
             <td><input type="button" value="-" ng-click="addOperator('-')"></td>
+            <td><input type="button" value="sqrt" ng-click="calculateSqrt()"></td>
           </tr>
           <tr>
             <td><input type="button" value="7" ng-click="addNumber('7')"></td>
             <td><input type="button" value="8" ng-click="addNumber('8')"></td>
             <td><input type="button" value="9" ng-click="addNumber('9')"></td>
             <td><input type="button" value="*" ng-click="addOperator('*')"></td>
+            <td></td>
           </tr>
             <tr>
+              <td></td>
               <td><input type="button" value="0" ng-click="addNumber('0')"></td>
               <td><input type="button" value="." ng-click="addDecimal()"></td>
-              <td><input type="button" value="=" ng-click="calculate()"></td>
               <td><input type="button" value="/" ng-click="addOperator('/')"></td>
+              <td><input type="button" value="=" ng-click="calculate()"></td>
             </tr>
       </form>
     </div>

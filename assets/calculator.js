@@ -48,6 +48,11 @@
           case '/':
             $scope.calculatortxt = $scope.input1 / $scope.input2;
             break;
+          case '^':
+            $scope.calculatortxt = Math.pow($scope.input1,  $scope.input2);
+            break;
+          default:
+            alert("something's wrong!");
         }
     }
 
@@ -62,6 +67,15 @@
         $scope.resetCalculator();
       }
       $scope.calculatortxt += num;
+    }
+
+    //Squareroot function added as an independent function due to the usage of only 1 number
+    //Would only work when neither of the other operator buttons were pressed
+    $scope.calculateSqrt = function(){
+      if($scope.operatortxt == ''){
+        $scope.input1 = parseInt($scope.calculatortxt);
+        $scope.calculatortxt = Math.sqrt($scope.input1);
+      }
     }
 
     $scope.addOperator = function(operator){
