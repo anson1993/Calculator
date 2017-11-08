@@ -8,13 +8,44 @@
       <script type="text/javascript" src="assets/calculator.js"></script>
   </head>
   <body>
-    <div ng-controller="CalculatorController">
+    <div id="calculator" ng-controller="CalculatorController">
+      <div id="calculator_screen">
+        <p>{{operatortxt}}</p>
+        <p>{{calculatortxt}}</p>
+      </div>
       <form>
+      <!--
         <input ng-change="calculate()" ng-model="input1" type="number" value="{{input1}}">
         <select ng-change="calculate()" ng-model="current_operation" ng-options="o as o for o in operations"></select>
         <input ng-change="calculate()" ng-model="input2" type="number" value="{{input2}}">
+      -->
+        <table>
+          <tr><td><input type="button" value="C" ng-click="resetCalculator()"></td></tr>
+          <tr>
+            <td><input type="button" value="1" ng-click="addNumber('1')"></td>
+            <td><input type="button" value="2" ng-click="addNumber('2')"></td>
+            <td><input type="button" value="3" ng-click="addNumber('3')"></td>
+            <td><input type="button" value="+" ng-click="addOperator('+')"></td>
+          </tr>
+          <tr>
+            <td><input type="button" value="4" ng-click="addNumber('4')"></td>
+            <td><input type="button" value="5" ng-click="addNumber('5')"></td>
+            <td><input type="button" value="6" ng-click="addNumber('6')"></td>
+            <td><input type="button" value="-" ng-click="addOperator('-')"></td>
+          </tr>
+          <tr>
+            <td><input type="button" value="7" ng-click="addNumber('7')"></td>
+            <td><input type="button" value="8" ng-click="addNumber('8')"></td>
+            <td><input type="button" value="9" ng-click="addNumber('9')"></td>
+            <td><input type="button" value="*" ng-click="addOperator('*')"></td>
+          </tr>
+            <tr>
+              <td><input type="button" value="0" ng-click="addNumber('0')"></td>
+              <td><input type="button" value="." ng-click="addDecimal()"></td>
+              <td><input type="button" value="=" ng-click="calculate()"></td>
+              <td><input type="button" value="/" ng-click="addOperator('/')"></td>
+            </tr>
       </form>
-      <p>{{output}}</p>
     </div>
   </body>
 </html>

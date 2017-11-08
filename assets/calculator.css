@@ -1,0 +1,19 @@
+#calculator {
+  line-height: 24px;
+  max-width: 300px;
+  background-color: #c2c2d6;
+}
+#calculator_screen {
+  background-color: rgba(255, 255, 255, 0.5);
+  height: 30px;
+  padding-right: 10px;
+  text-align: right;
+}
+#calculator p { float: left; }
+#calculator p + p { float: right; }
+#calculator form input {
+  text-align: center;
+  font-size: 1em;
+  height: 50px;
+  width: 70px;
+}
