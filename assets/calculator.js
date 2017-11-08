@@ -6,13 +6,15 @@
 
     $scope.calculatortxt = '0';
     $scope.operatortxt = '';
-    $scope.input1 = 0;
-    $scope.input2 = 0;
+    $scope.input1 = null;
+    $scope.input2 = null;
     $scope.output = 0
 
-    $scope.operations = ['+','-','*','/'];
-    $scope.current_operation = '+';
+    var calculated = false;
 
+    // $scope.operations = ['+','-','*','/'];
+    // $scope.current_operation = '+';
+    //
     // $scope.calculate = function(){
     //   switch($scope.current_operation){
     //     case '+':
@@ -54,6 +56,7 @@
           default:
             alert("something's wrong!");
         }
+        calculated = true;
     }
 
     $scope.addDecimal = function(){
@@ -63,33 +66,29 @@
     }
 
     $scope.addNumber = function(num){
-      if($scope.input1 != 0 && $scope.input2 != 0){
+      if(calculated == true)
         $scope.resetCalculator();
-      }
+      if($scope.input1 != null)
+        $scope.calculatortxt = '';
       $scope.calculatortxt += num;
-    }
-
-    //Squareroot function added as an independent function due to the usage of only 1 number
-    //Would only work when neither of the other operator buttons were pressed
-    $scope.calculateSqrt = function(){
-      if($scope.operatortxt == ''){
-        $scope.input1 = parseInt($scope.calculatortxt);
-        $scope.calculatortxt = Math.sqrt($scope.input1);
-      }
     }
 
     $scope.addOperator = function(operator){
       $scope.operatortxt = operator;
       $scope.input1 = parseInt($scope.calculatortxt);
-      $scope.calculatortxt = 0;
+      if(operator == 'sqrt'){
+        $scope.calculatortxt = Math.sqrt($scope.input1);
+        calculated = true;
+      }
     }
 
     $scope.resetCalculator = function(){
       $scope.operatortxt = '';
       $scope.calculatortxt = '0';
-      $scope.input1 = 0;
-      $scope.input2 = 0;
+      $scope.input1 = null;
+      $scope.input2 = null;
       $scope.output = 0;
+      calculated = false;
     }
 
   }]);
