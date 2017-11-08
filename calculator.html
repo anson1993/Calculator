@@ -1,16 +1,20 @@
 <!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Calculator</title>
-    <script src="lib/angular/angular-1.6.6/angular.min.js"></script>
-    <script src="assets/calculator.js"></script>
-</head>
-<body>
-
-<div>
-
-</div>
-
-</body>
+<html lang="en" ng-app="calculator">
+  <head>
+      <meta charset="utf-8">
+      <title>Calculator</title>
+      <link rel="stylesheet" type="text/css" href="assets/calculator.css">
+      <script type="text/javascript" src="lib/angular/angular-1.6.6/angular.min.js"></script>
+      <script type="text/javascript" src="assets/calculator.js"></script>
+  </head>
+  <body>
+    <div ng-controller="CalculatorController">
+      <form>
+        <input ng-change="calculate()" ng-model="input1" type="number" value="{{input1}}">
+        <select ng-change="calculate()" ng-model="current_operation" ng-options="o as o for o in operations"></select>
+        <input ng-change="calculate()" ng-model="input2" type="number" value="{{input2}}">
+      </form>
+      <p>{{output}}</p>
+    </div>
+  </body>
 </html>
