@@ -11,7 +11,6 @@
     //First number, second number and calculated answer
     $scope.input1 = null;
     $scope.input2 = null;
-    $scope.output = 0
     //Sets whether the calculation is completed, used to restart after completion
     var calculated = false;
 
@@ -32,14 +31,14 @@
           case '/':
             $scope.calculatortxt = $scope.input1 / $scope.input2;
             break;
-          case '^':
+          case 'To the Power of':
             $scope.calculatortxt = Math.pow($scope.input1,  $scope.input2);
             break;
-          case 'sqrt':
+          case 'Square Root':
             $scope.calculatortxt = Math.sqrt($scope.input1);
             break;
           default:
-            alert("Something's wrong! Please reset Calculator(C)");
+            $scope.resetCalculator();
         }
         calculated = true;
     }
@@ -57,8 +56,9 @@
       //Clears calculator screen when second number is being input
       if(parseInt($scope.calculatortxt) == $scope.input1)
         $scope.calculatortxt = '';
-    // Prevents more than 1 0s when calculator screen is already
-      if(num == 0 && $scope.calculatortxt == '0')
+    // Prevents more than 1 0s when calculator screen is already 0
+      if((num == 0 && $scope.calculatortxt == '0')
+        || (num != 0 && $scope.calculatortxt == '0'))
         $scope.calculatortxt = '';
       $scope.calculatortxt += num;
     }
@@ -68,8 +68,12 @@
       $scope.operatortxt = operator;
       addInput1();
       //Run calculation at once if SquareRoot operator is used
-      if(operator == 'sqrt'){
+      if(operator == 'Square Root'){
         $scope.calculate();
+      }
+      //Allows another operation after getting an answer
+      if(calculated = true){
+        nextCalculation();
       }
     }
 
@@ -79,7 +83,12 @@
       $scope.calculatortxt = '0';
       $scope.input1 = null;
       $scope.input2 = null;
-      $scope.output = 0;
+      calculated = false;
+    }
+
+    //Preparation for calculation upon calculation
+    function nextCalculation(){
+      $scope.input2 = null;
       calculated = false;
     }
 
