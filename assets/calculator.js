@@ -18,24 +18,29 @@
     //and puts output onto the calculator screen
     $scope.calculate = function(){
         addInput2();
+        if(isNaN($scope.input1) || isNaN($scope.input2) ){
+          alert('');
+          // $scope.resetCalculator();
+          // return 0;
+        }
         switch($scope.operatortxt){
           case '+':
-            $scope.calculatortxt = $scope.input1 + $scope.input2;
+            $scope.calculatortxt = ($scope.input1 + $scope.input2);
             break;
           case '-':
-            $scope.calculatortxt = $scope.input1 - $scope.input2;
+            $scope.calculatortxt = ($scope.input1 - $scope.input2);
             break;
           case '*':
-            $scope.calculatortxt = $scope.input1 * $scope.input2;
+            $scope.calculatortxt = ($scope.input1 * $scope.input2);
             break;
           case '/':
-            $scope.calculatortxt = $scope.input1 / $scope.input2;
+            $scope.calculatortxt = ($scope.input1 / $scope.input2);
             break;
           case 'To the Power of':
-            $scope.calculatortxt = Math.pow($scope.input1,  $scope.input2);
+            $scope.calculatortxt = (Math.pow($scope.input1,  $scope.input2));
             break;
           case 'Square Root':
-            $scope.calculatortxt = Math.sqrt($scope.input1);
+            $scope.calculatortxt = (Math.sqrt($scope.input1));
             break;
           default:
             $scope.resetCalculator();
@@ -54,7 +59,7 @@
       if(calculated == true)
         $scope.resetCalculator();
       //Clears calculator screen when second number is being input
-      if(parseInt($scope.calculatortxt) == $scope.input1)
+      if(parseFloat($scope.calculatortxt) == $scope.input1)
         $scope.calculatortxt = '';
     // Prevents more than 1 0s when calculator screen is already 0
       if((num == 0 && $scope.calculatortxt == '0')
@@ -94,12 +99,12 @@
 
     //Puts the current calculator screen number into input 1
     function addInput1(){
-      $scope.input1 = parseInt($scope.calculatortxt);
+      $scope.input1 = parseFloat($scope.calculatortxt);
     }
 
     //Puts the current calculator screen number into input 2
     function addInput2(){
-      $scope.input2 = parseInt($scope.calculatortxt);
+      $scope.input2 = parseFloat($scope.calculatortxt);
     }
 
   }]);
