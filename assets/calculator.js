@@ -16,44 +16,51 @@
 
     //Main calculation function, processes all the calculation from the inputs
     //and puts output onto the calculator screen
+    //Function is bound to button when user clicks '='
     $scope.calculate = function(){
         addInput2();
+        //Cases where input1 or input2 is NaN, Infinite
         if(isNaN($scope.input1) || isNaN($scope.input2) ){
-          alert('');
-          // $scope.resetCalculator();
-          // return 0;
+          $scope.calculatortxt = 'NaN. Please Reset.';
+          return 0;
+        } else if(!isFinite($scope.input1) || !isFinite($scope.input2)){
+          $scope.calculatortxt = 'Infinite. Please Reset.';
+          return 0;
         }
         switch($scope.operatortxt){
           case '+':
-            $scope.calculatortxt = ($scope.input1 + $scope.input2);
+            $scope.calculatortxt = $scope.input1 + $scope.input2;
             break;
           case '-':
-            $scope.calculatortxt = ($scope.input1 - $scope.input2);
+            $scope.calculatortxt = $scope.input1 - $scope.input2;
             break;
           case '*':
-            $scope.calculatortxt = ($scope.input1 * $scope.input2);
+            $scope.calculatortxt = $scope.input1 * $scope.input2;
             break;
           case '/':
-            $scope.calculatortxt = ($scope.input1 / $scope.input2);
+            $scope.calculatortxt = $scope.input1 / $scope.input2;
             break;
           case 'To the Power of':
-            $scope.calculatortxt = (Math.pow($scope.input1,  $scope.input2));
+            $scope.calculatortxt = Math.pow($scope.input1,  $scope.input2);
             break;
           case 'Square Root':
-            $scope.calculatortxt = (Math.sqrt($scope.input1));
+            $scope.calculatortxt = Math.sqrt($scope.input1);
             break;
           default:
             $scope.resetCalculator();
         }
+        //Sets calculated to true after calculation to for resetting purposes
         calculated = true;
     }
 
+    //Function is bound to button when user clicks '.'
     $scope.addDecimal = function(){
       if(!$scope.calculatortxt.includes('.')){
         $scope.calculatortxt += '.';
       }
     }
 
+    //Function is bound to button when user clicks on a number
     $scope.addNumber = function(num){
       //Reset Calculator after the last calculation
       if(calculated == true)
@@ -68,6 +75,7 @@
       $scope.calculatortxt += num;
     }
 
+    //Function is bound to button when user clicks on an operator
     //Adds an operator for the 2 inputs
     $scope.addOperator = function(operator){
       $scope.operatortxt = operator;
@@ -82,6 +90,7 @@
       }
     }
 
+    //Function is bound to button when user clicks on the 'C' button
     //Function to reset calculator
     $scope.resetCalculator = function(){
       $scope.operatortxt = '';
@@ -92,6 +101,7 @@
     }
 
     //Preparation for calculation upon calculation
+    //used in 'addOperator()' function
     function nextCalculation(){
       $scope.input2 = null;
       calculated = false;

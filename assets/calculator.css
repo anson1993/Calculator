@@ -1,12 +1,23 @@
-h2 { text-align: center; }
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,700|Open+Sans+Condensed:700);
+@import url(https://fonts.googleapis.com/css?family=Indie+Flower|Indie+Flower);
+
+body {
+  background-image: url(images/numbers_bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: 50% 35%;
+}
+h1 {
+  text-align: center;
+  font-family: 'Indie Flower', sans-serif;
+}
 #calculator {
   margin-right: auto;
   margin-left: auto;
   line-height: 24px;
   max-width: 600px;
   background-color: #c2c2d6;
-}
-#calculator main {
   padding: 20px;
 }
 .cal_screen {
@@ -16,9 +27,8 @@ h2 { text-align: center; }
   text-align: right;
 }
 hr {
-  border-width: 1.5px;
-  background-color: #000;
-  color: #000;
+  border-width: 3px;
+  border-color: rgba(0,0,0,0.3);
 }
 #calculator p { float: left; font-size: 1.75em; padding-left: 50px; }
 #calculator p + p { float: right; padding-right: 50px; }
